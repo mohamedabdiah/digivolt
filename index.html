@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiVolt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'logo-blue': '#4FC3F7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tech-pattern {
+            background-color: #E3F2FD;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234FC3F7' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .tech-pattern.dark {
+            background-color: #1A237E;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234FC3F7' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-color duration-300">
+    <header class="fixed w-full top-0 bg-white dark:bg-gray-900 shadow-md z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="logo2.png" alt="DigiVolt Logo" class="w-20 h-20 object-contain">
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">Home</a>
+                    <a href="#" class="text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">About</a>
+                    <a href="#" class="text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">Projects</a>
+                    <a href="#" class="text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">Contact</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+                        <!-- Sun Icon -->
+                        <svg class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path>
+                        </svg>
+                        <!-- Moon Icon -->
+                        <svg class="w-6 h-6 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#" class="block py-2 text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">Home</a>
+                <a href="#" class="block py-2 text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">About</a>
+                <a href="#" class="block py-2 text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">Projects</a>
+                <a href="#" class="block py-2 text-gray-700 dark:text-white hover:text-logo-blue dark:hover:text-logo-blue transition-colors">Contact</a>
+                
+                <!-- Mobile Dark Mode Toggle -->
+                <button id="mobileDarkModeToggle" class="mt-2 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 w-full flex items-center justify-center">
+                    <span class="mr-2 text-gray-700 dark:text-white">Toggle Dark Mode</span>
+                    <!-- Sun Icon -->
+                    <svg class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path>
+                    </svg>
+                    <!-- Moon Icon -->
+                    <svg class="w-6 h-6 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Spacer for fixed header -->
+    <div class="h-20"></div>
+
+    <!-- Main Section -->
+        <main class="h-[80vh] tech-pattern dark relative overflow-hidden bg-gray-900">        <!-- Gradient Overlay -->        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-transparent"></div>
+        
+        <!-- Floating Technology Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute w-32 h-32 -left-10 top-20 bg-logo-blue/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute w-32 h-32 -right-10 bottom-20 bg-logo-blue/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-8 relative h-full flex items-center justify-center">
+            <!-- Welcome Text and Email Section -->
+            <div class="max-w-2xl mx-auto text-center">
+                                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">                    kusoo dhawoow <span class="text-logo-blue">DigiVolt</span>                </h1>                <p class="text-xl md:text-2xl text-gray-300 mb-8">                    Xaruunta adeeg bixinta casriga ah.                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto relative group">
+                    <div class="flex-1 relative">
+                        <input 
+                            type="email" 
+                            placeholder="halkan noogu soo dir email kaaga"
+                            class="w-full px-6 py-4 rounded-xl border-2 border-gray-700 focus:outline-none focus:border-logo-blue bg-gray-800/90 backdrop-blur-sm text-white shadow-lg hover:shadow-xl transition-all duration-300 placeholder-gray-500"
+                        >
+                        <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-logo-blue/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
+                    <button class="px-8 py-4 bg-logo-blue text-white rounded-xl hover:bg-white hover:text-logo-blue border-2 border-transparent hover:border-logo-blue shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group">
+                        <span class="relative z-10">Soo Dir</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-logo-blue to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white dark:bg-gray-900 relative">
+        <div class="container mx-auto px-4">
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Adeegyada aan qabano
+                </h2>
+            </div>
+
+            <!-- Slider Container -->
+            <div class="relative">
+                <!-- Slider Wrapper -->
+                <div class="overflow-hidden">
+                    <div id="servicesSlider" class="flex transition-transform duration-300 ease-in-out">
+                        <!-- CCTV Installation -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                                <div class="aspect-video overflow-hidden">
+                                    <img 
+                                        src="https://www.barrybros.com/wp-content/uploads/2022/07/Depositphotos_282950500_S.jpg.webp"
+                                        alt="CCTV Installation"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    >
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="text-xl font-bold text-white mb-2">Installation CCTV Camera</h3>
+                                    <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        Rakibida kaamirooyinka amniga iyo nidaamyada ilaalinta ee xirfadlayaasha.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Solar System Installation -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                                <div class="aspect-video overflow-hidden">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800"
+                                        alt="Solar System Installation"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    >
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="text-xl font-bold text-white mb-2">Installation Solar System</h3>
+                                    <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        Xalalka tamarta la cusboonaysiin karo iyo rakibida qoraxda oo xirfad leh.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Software Development -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                                <div class="aspect-video overflow-hidden">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1580982324076-d95230549339?auto=format&fit=crop&w=800"
+                                        alt="Software Development"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    >
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="text-xl font-bold text-white mb-2">Software Development</h3>
+                                    <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        Horumarinta barnaamijyada gaarka ah iyo adeegyada horumarinta websaydhada.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fingerprint Scanner Installation -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                                <div class="aspect-video overflow-hidden">
+                                    <img 
+                                        src="https://getsafeandsound.com/wp-content/uploads/2021/03/Biometric_Getty_Vinitdeekhanu-1024x577.jpg"
+                                        alt="Fingerprint Scanner Installation"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    >
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="text-xl font-bold text-white mb-2">Fingerprint Scanner</h3>
+                                    <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        Rakibida iyo dajinta nidaamka far-galinta ee casriga ah.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Speaker Installation -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] p-2">
+                            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                                <div class="aspect-video overflow-hidden">
+                                    <img 
+                                        src="https://sponcomm.com/u_file/2408/photo/2b24170c95.jpg"
+                                        alt="Speaker Installation"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    >
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="text-xl font-bold text-white mb-2">Xidhista Sameecadaha</h3>
+                                    <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        Xidhista iyo rakibida sameecadaha masaajidada iyo halls ka oo xirfad leh.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:bg-logo-blue hover:text-white transition-all z-10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:bg-logo-blue hover:text-white transition-all z-10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Hawl wadeenada Shirkada
+                </h2>
+            </div>
+
+            <!-- Team Members Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="aspect-square overflow-hidden">
+                                                <img                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv6eoF933XPRq_4hU5i7LCbdiwekJb0iCS4w&s"                            alt="Ahmed Mohamed"                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"                        >
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Mohamed Abdikani</h3>
+                        <p class="text-logo-blue font-medium">Operational Manager</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="aspect-square overflow-hidden">
+                                                <img                             src="https://scontent.fadd3-1.fna.fbcdn.net/v/t39.30808-1/464190962_1733129347543995_2406282389098017898_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeG6WUJJOkZNQtYdYlBHa6ZRXXyEv2LvnJ5dfIS_Yu-cnt22k8DbLJRZiCMAGy1A19GZaB4FmlJY2dX8M9x8SUZj&_nc_ohc=0lF4Fd6SkVkQ7kNvwGU40Zu&_nc_oc=AdlLFmCG0hvqBi7QdlNByOPIxU5IG5cao1gXdsInnlmDZpiQjRmHd70a5knLwqeruTw&_nc_zt=24&_nc_ht=scontent.fadd3-1.fna&_nc_gid=TE90OR_l4gLOcKn6VHvyag&oh=00_AfJDab4RzJ5qXHOX4VhR2To3NzWCRdrij9r0v5hszBX4lw&oe=682957C1"                            alt="Omar Hassan"                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"                        >
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">AbdiAziiz Abdi</h3>
+                        <p class="text-logo-blue font-medium">Pressident</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="aspect-square overflow-hidden">
+                                                <img                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"                            alt="Abdi Yusuf"                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"                        >
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">AbdiKhabiir AbdiShakuur</h3>
+                        <p class="text-logo-blue font-medium">Assistent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Magaalooyinka aan ka hawl galno
+                </h2>
+            </div>
+
+            <!-- Cities Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Jigjiga -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Jigjiga</h3>
+                    </div>
+                </div>
+
+                <!-- Herer -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Herer</h3>
+                    </div>
+                </div>
+
+                <!-- Diridhaba -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Diridhaba</h3>
+                    </div>
+                </div>
+
+                <!-- Dhagahbuur -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Dhagahbuur</h3>
+                    </div>
+                </div>
+
+                <!-- Qabridahar -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Qabridahar</h3>
+                    </div>
+                </div>
+
+                <!-- Boorama -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Boorama</h3>
+                    </div>
+                </div>
+
+                <!-- Wajaale -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Wajaale</h3>
+                    </div>
+                </div>
+
+                <!-- Godey -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Godey</h3>
+                    </div>
+                </div>
+
+                <!-- Fiiq -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Fiiq</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Nagala Soo Xidhiidh
+                </h2>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- WhatsApp Card -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center mb-6">
+                        <svg class="w-12 h-12 text-green-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.237a9.994 9.994 0 004.779 1.217h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.922-7.062A9.935 9.935 0 0012.012 2zm-.004 2c2.227 0 4.32.869 5.892 2.44a8.306 8.306 0 012.439 5.892c-.001 4.6-3.742 8.34-8.327 8.34a8.3 8.3 0 01-4.042-1.052l-.314-.188-3.097.813.813-3.096-.188-.314a8.275 8.275 0 01-1.052-4.042c0-4.599 3.742-8.339 8.327-8.339l.549-.354zm-.508 3c-.438 0-1.09.03-1.633.482-.397.331-.897.972-.897 2.368 0 1.394.992 2.742 1.13 2.931.14.189 1.922 3.086 4.745 4.204 2.346.933 2.823.747 3.33.701.508-.048 1.636-.673 1.864-1.325.23-.651.23-1.21.161-1.325-.067-.115-.248-.185-.497-.325-.248-.14-1.478-.733-1.706-.817-.23-.082-.396-.123-.563.124-.166.247-.643.817-.789.984-.145.167-.29.19-.54.048-.248-.139-1.051-.388-2.002-1.239-.74-.661-1.24-1.475-1.385-1.724-.145-.247-.015-.38.11-.505.112-.11.248-.289.372-.433.124-.145.167-.247.25-.413.083-.165.04-.31-.02-.433-.063-.125-.564-1.358-.773-1.859-.21-.5-.42-.433-.564-.44-.145-.009-.31-.009-.476-.009z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white text-center mb-4">WhatsApp</h3>
+                    <a href="https://wa.me/251920048157" class="text-gray-600 dark:text-gray-300 text-center text-lg block hover:text-green-500 dark:hover:text-green-400 transition-colors">
+                        +251 92 004 8157
+                    </a>
+                </div>
+
+                <!-- Call Numbers Card -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center mb-6">
+                        <svg class="w-12 h-12 text-logo-blue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white text-center mb-4">Call Numbers</h3>
+                    <div class="space-y-2 text-center">
+                        <a href="tel:0906652202" class="text-gray-600 dark:text-gray-300 text-lg block hover:text-logo-blue dark:hover:text-logo-blue transition-colors">
+                            0906652202
+                        </a>
+                        <a href="tel:0922230921" class="text-gray-600 dark:text-gray-300 text-lg block hover:text-logo-blue dark:hover:text-logo-blue transition-colors">
+                            0922230921
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-50 dark:bg-gray-800">
+        <!-- Main Footer -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Company Info -->
+                <div class="text-center md:text-left">
+                    <img src="logo2.png" alt="DigiVolt Logo" class="w-24 h-24 mx-auto md:mx-0 mb-4 object-contain">
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Xaruunta adeeg bixinta casriga ah ee DigiVolt waxay ku taala Jigjiga, Ethiopia.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Xiriirka Degdega</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-600 dark:text-gray-300">Email: info@digivolt.com</p>
+                        <p class="text-gray-600 dark:text-gray-300">Tel: +251 92 004 8157</p>
+                        <p class="text-gray-600 dark:text-gray-300">Location: Jigjiga, Ethiopia</p>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Nala Soco</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <!-- Facebook -->
+                        <a href="https://facebook.com/digivolt" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"/>
+                            </svg>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/251920048157" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                                                                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">                                <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.237a9.994 9.994 0 004.779 1.217h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.922-7.062A9.935 9.935 0 0012.012 2zm-.004 2c2.227 0 4.32.869 5.892 2.44a8.306 8.306 0 012.439 5.892c-.001 4.6-3.742 8.34-8.327 8.34a8.3 8.3 0 01-4.042-1.052l-.314-.188-3.097.813.813-3.096-.188-.314a8.275 8.275 0 01-1.052-4.042c0-4.599 3.742-8.339 8.327-8.339l.549-.354zm-.508 3c-.438 0-1.09.03-1.633.482-.397.331-.897.972-.897 2.368 0 1.394.992 2.742 1.13 2.931.14.189 1.922 3.086 4.745 4.204 2.346.933 2.823.747 3.33.701.508-.048 1.636-.673 1.864-1.325.23-.651.23-1.21.161-1.325-.067-.115-.248-.185-.497-.325-.248-.14-1.478-.733-1.706-.817-.23-.082-.396-.123-.563.124-.166.247-.643.817-.789.984-.145.167-.29.19-.54.048-.248-.139-1.051-.388-2.002-1.239-.74-.661-1.24-1.475-1.385-1.724-.145-.247-.015-.38.11-.505.112-.11.248-.289.372-.433.124-.145.167-.247.25-.413.083-.165.04-.31-.02-.433-.063-.125-.564-1.358-.773-1.859-.21-.5-.42-.433-.564-.44-.145-.009-.31-.009-.476-.009z"/>                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Bar -->
+        <div class="border-t border-gray-200 dark:border-gray-700">
+            <div class="container mx-auto px-4 py-6">
+                <p class="text-center text-gray-600 dark:text-gray-400">
+                    © 2025 DigiVolt. Xuquuqda oo dhan waa dhawran tahay.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        }
+
+                // Set dark mode by default        if (!localStorage.getItem('darkMode')) {            localStorage.setItem('darkMode', 'true');        }        if (localStorage.getItem('darkMode') === 'true') {            document.documentElement.classList.add('dark');        }
+
+        // Event listeners for dark mode toggles
+        document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+        document.getElementById('mobileDarkModeToggle').addEventListener('click', toggleDarkMode);
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Slider functionality
+        const slider = document.getElementById('servicesSlider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        const totalSlides = 5; // Updated number of slides
+        let autoSlideInterval;
+        const autoSlideDelay = 3000; // 3 seconds between slides
+
+        function updateSlider() {
+            const slideWidth = 100 / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1);
+            slider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+
+        function nextSlide() {
+            const maxSlides = window.innerWidth >= 1024 ? totalSlides - 3 : 
+                            window.innerWidth >= 768 ? totalSlides - 2 : 
+                            totalSlides - 1;
+            currentSlide = currentSlide >= maxSlides ? 0 : currentSlide + 1;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            const maxSlides = window.innerWidth >= 1024 ? totalSlides - 3 : 
+                            window.innerWidth >= 768 ? totalSlides - 2 : 
+                            totalSlides - 1;
+            currentSlide = currentSlide <= 0 ? maxSlides : currentSlide - 1;
+            updateSlider();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            prevSlide();
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            nextSlide();
+            startAutoSlide();
+        });
+
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+        prevBtn.addEventListener('mouseenter', stopAutoSlide);
+        prevBtn.addEventListener('mouseleave', startAutoSlide);
+        nextBtn.addEventListener('mouseenter', stopAutoSlide);
+        nextBtn.addEventListener('mouseleave', startAutoSlide);
+
+        // Update slider on window resize
+        window.addEventListener('resize', updateSlider);
+
+        // Start automatic sliding
+        startAutoSlide();
+    </script>
+</body>
+</html> 
